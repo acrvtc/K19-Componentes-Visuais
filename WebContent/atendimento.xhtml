@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>K19 Treinamentos</title>
+</h:head>
+
+
+<h:body>
+
+	<h:form>
+		
+		<h:panelGrid columns="2">
+		    
+			<h:graphicImage library="images" value="eclipselunar.jpg" /><br/><br/>		    
+
+				
+			<h:outputLabel value="Nome: " for="nome" />
+			<h:inputText value="#{solicitacaoDeAtendimento.nome}" />
+			
+			<h:outputLabel value="Email: " for="email" />
+			<h:inputText value="#{solicitacaoDeAtendimento.email}" />
+			
+			<h:outputLabel value="Telefone: " for="telefone" />
+			<h:inputText value="#{solicitacaoDeAtendimento.telefone}" />
+			
+			<h:outputLabel value="Sexo" for="sexo"/>
+			<h:selectOneRadio value="#{solicitacaoDeAtendimento.genero}" layout="lineDirection">
+				<f:selectItems value="#{solicitacaoDeAtendimento.sexos}"
+				               var = "sexo"
+				               itemValue = "#{sexo}"
+				               itemLabel="#{sexo}" />
+			</h:selectOneRadio>
+	        
+	        <h:outputLabel value="Informe o nº do pedido: " for="pedido" />
+	        <h:inputText value="#{solicitacaoDeAtendimentoBean.pedido}" />
+	        
+	        <h:outputLabel value="Assunto: " for="assunto" />
+			<h:selectOneMenu value="#{solicitacaoDeAtendimento.assunto}" id="assunto" >
+				 <f:selectItems value="#{solicitacaoDeAtendimento.assuntos.keySet()}" 
+				                var="tipo" 
+				                itemValue="#{tipo}" 
+				                itemLabel="#{tipo}" />
+			</h:selectOneMenu>        
+	        
+	        <h:outputLabel value="Comentário: " for="comentario" />
+	        <h:inputTextarea value="#{solicitacaoDeAtendimento.comentario}" />
+	        
+	        <h:commandButton value="Enviar" action="#{solicitacaoDeAtendimento.enviar()}" />						
+		
+		</h:panelGrid>
+
+	</h:form>
+
+</h:body>   
+
+
+</html>
